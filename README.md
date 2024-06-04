@@ -1,13 +1,26 @@
-# QSS 20 Final Project
+STARTling Disparities: Racial Gaps in the START Program
  
-Project Option
-• SIPS: Short Term, Assessment, Response, Treatment (START) 
+This project explores the impact of the COVID-19 pandemic on children and families with intellectual and developmental disabilities (IDD), using data from the State Intellectual and Developmental Disabilities Research Centers (SIDDRC) surveys. Here's an overview of the Jupyter Notebooks used in the analysis:
 
-Main questions
-Our project will focus on analyzing patient experiences within the START program. Firstly, we will analyze the demographic composition of START participants: looking at the race, gender, and living situation. Next, we will look at how demographics correlate with access to and satisfaction with services. Some questions include: How do the demographics (measured above) correlate with satisfaction of mental health services received, aggressive behavior, or crisis events? We will also focus on the three primary goals of START services: Access, Appropriateness, and Accountability. Looking at “Access,” we will look at where individuals are primarily receiving their mental health services, and access to in-patient psychiatric services. For “Appropriateness,” we will analyze: Are patients generally satisfied with the mental health care their family member is receiving? There are many different variables that we can look at individually or aggregate to determine this question. Lastly, for “Accountability,” we will investigate if START services are attaining their primary goals of supporting individuals with intellectual/developmental disabilities and mental health needs. We will also investigate the current areas of the START program patients/families are satisfied and dissatisfied with. Furthermore, we will evaluate how often patients encounter law enforcement or self-harming behaviors, and if these changed over time. We will also look at trends, comparing hospital visits, appointment lengths, overall satisfaction, etc. to before and after the COVID-19, as well as the full time-length from 2010-present.
+00_data_cleaning_demo_abc.ipynb
 
-Data sources/relevant fields
-The data contains demographic information about the participants, including gender, race, ethnicity, level of intellectual disability, and age. It also contains details about their liv- ing situation at enrollment, including whether they lived in multiple places recently, and information about their caregivers. The data also contains information about the participants’ health and behavior, including psychiatric and medical medical diagnoses, history of psychiatric hospitalizations, emergency department visits, and law enforcement encounters. It also details services received at enrollment and funding sources of those services. Additionally, the data contains details about the participants’ educational status, such as grade level, IEP/504 plan, and school setting. It also contains information about any history of child protective services involvement and about any past incarceration. With this range of information, the data can be analyzed to understand the characteristics and needs of the START participants, as well as factors that might impact their outcomes and experiences with the program.
+Input: Raw SIRS Demographics, SIRS ABC, and FEIS datasets.
+Purpose: Cleans and prepares the data for analysis. This includes:
+Standardizing race/ethnicity categories.
+Merging the SIRS datasets.
+Merging the combined SIRS dataset with the FEIS dataset.
+Output: Cleaned and merged datasets (sirs_demo_abc_clean.csv and feis_sirs_demo_merged.csv) for subsequent analysis.
+01_demographic_disparities_analysis.ipynb
 
-Anticipated challenges
-We may have difficulty in determining which factors influence access, appropriateness, and accountability, and how their intersection might increase or decrease this influence. In regards to access, it may be hard to ascertain which demographics affect access to services most strongly, because of the additional impact that COVID had on medical services. In regards to appropriateness, it will be difficult to decide how to interpret patient satisfaction. Although there is a question about patient satisfaction, there is no way to determine what influenced the level of satisfaction most strongly, as there are many components that factor into the decision, including service opportunity, medical contact, professional understanding, and caretaking recognition. Each patient’s background is unique, and most will likely have different values for each factor that affect their satisfaction. In regards to accountability, it similarly may be difficult to isolate the variables that most directly relate to how the START services support individuals. There are many different ways that the patients are supported, and so it will be hard to decide how each factor should be weighed due to their intersection.
+Input: Cleaned and merged datasets (sirs_demo_abc_clean.csv).
+Purpose: Conducts a difference-in-differences analysis to assess changes in adverse childhood experiences (ACEs) and behavioral health before and after the pandemic onset. It also examines disparities in enrollment rates in START services by race/ethnicity.
+Output: Statistical results and visualizations (tables, figures) highlighting any significant changes or disparities related to ACEs, behavioral health, and enrollment.
+02_topic_modeling.ipynb
+
+Input: Cleaned and merged dataset (feis_sirs_demo_merged.csv).
+Purpose: Performs topic modeling using Latent Dirichlet Allocation (LDA) on open-ended survey responses about service needs and advice. It also quantifies and visualizes changes in satisfaction with services before and after the pandemic.
+Output: Identified topics, topic prevalence over time and by race/ethnicity, visualizations (heatmap, forest plot) of satisfaction changes, and relevant statistics.
+Important Note:
+
+These notebooks are designed to be run sequentially. The output of one notebook serves as the input for the next.
+
